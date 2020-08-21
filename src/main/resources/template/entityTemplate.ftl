@@ -26,7 +26,7 @@ public class ${tableInfo.upperCamelCaseName!""}DO extends PageBean implements Se
 <#list tableInfo.columnInfoList as item>
 
     @ApiModelProperty("${item.comment!""}")
-    private ${item.dataType!""} ${item.firstLowerCamelCaseName!""};
+    private ${item.fieldDataType!""} ${item.firstLowerCamelCaseName!""};
 </#list>
 <#else>
 </#if>

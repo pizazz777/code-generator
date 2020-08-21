@@ -48,10 +48,10 @@ public class ColumnInfo {
      */
     public void transform(DatabaseSchemaEnum schemaEnum) {
         if (Objects.equals(schemaEnum, DatabaseSchemaEnum.MYSQL)) {
-            fieldDataType = getFieldTypeByDataTypeOfMySql();
+            this.fieldDataType = getFieldTypeByDataTypeOfMySql();
         }
         if (Objects.equals(schemaEnum, DatabaseSchemaEnum.ORACLE)) {
-            fieldDataType = getFieldTypeByDataTypeOfOracle();
+            this.fieldDataType = getFieldTypeByDataTypeOfOracle();
         }
         this.firstLowerCamelCaseName = StrUtil.convertUnderLineToFirstLowerCamelCase(this.name);
     }

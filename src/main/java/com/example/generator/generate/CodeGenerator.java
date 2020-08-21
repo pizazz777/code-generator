@@ -76,7 +76,7 @@ public class CodeGenerator {
         }
         if (generatorProperties.getGenerateEntity()) {
             // entity
-            templateHandler.writeTemplateToFile(generatorProperties, "modelTemplate.ftl", templateFilePathPrefix.replace("#{package}", "java/" + generatorProperties.getEntityPackage().replace(".", File.separator)) + "DO.java");
+            templateHandler.writeTemplateToFile(generatorProperties, "entityTemplate.ftl", templateFilePathPrefix.replace("#{package}", "java/" + generatorProperties.getEntityPackage().replace(".", File.separator)) + "DO.java");
         }
         if (generatorProperties.getGenerateMapper()) {
             // mapper

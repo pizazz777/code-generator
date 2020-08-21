@@ -1,7 +1,6 @@
 package com.example.generator.handler;
 
 import com.example.generator.properties.GeneratorProperties;
-import com.google.common.base.Charsets;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -14,7 +13,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Locale;
 import java.util.Objects;
 
 /**

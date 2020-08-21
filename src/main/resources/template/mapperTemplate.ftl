@@ -157,7 +157,7 @@
 <#if tableInfo.columnInfoList?? && (tableInfo.columnInfoList?size > 0)>
     <#list tableInfo.columnInfoList as item>
                 <if test="query.${item.firstLowerCamelCaseName} != null<#if item.dataType?? && (item.dataType == "Integer" || item.dataType == "Short" || item.dataType == "Long")> and query.${item.firstLowerCamelCaseName} > 0 </#if>">
-                    <#if item.dataType == "String">
+                    <#if item.fieldDataType == "String">
                     AND
                     ${item.name!""} LIKE CONCAT('%', <#noparse>#{</#noparse>query.${item.firstLowerCamelCaseName}<#noparse>}</#noparse>, '%')
                     <#else>
