@@ -6,7 +6,6 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +19,6 @@ import java.util.Objects;
  * @date 2020/08/20
  * @description: 类描述: 模板处理类
  **/
-@Slf4j
 public class TemplateHandler {
 
     /**
@@ -40,9 +38,6 @@ public class TemplateHandler {
         try (PrintWriter writer = new PrintWriter(targetFilePath)) {
             template.process(properties, writer);
             writer.flush();
-            if (log.isDebugEnabled()) {
-                log.debug("将模板[{}]写入到文件:[{}]", templateFileName, targetFilePath);
-            }
         }
     }
 

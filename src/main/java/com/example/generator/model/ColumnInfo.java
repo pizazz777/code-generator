@@ -47,12 +47,14 @@ public class ColumnInfo {
      * 数据库字段类型转为类字段类型 数据库字段名转为类字段名(驼峰形式首字母小写)
      */
     public void transform(DatabaseSchemaEnum schemaEnum) {
+        // 表字段类型->类字段类型
         if (Objects.equals(schemaEnum, DatabaseSchemaEnum.MYSQL)) {
             this.fieldDataType = getFieldTypeByDataTypeOfMySql();
         }
         if (Objects.equals(schemaEnum, DatabaseSchemaEnum.ORACLE)) {
             this.fieldDataType = getFieldTypeByDataTypeOfOracle();
         }
+        // 表字段名->类字段名(
         this.firstLowerCamelCaseName = StrUtil.convertUnderLineToFirstLowerCamelCase(this.name);
     }
 

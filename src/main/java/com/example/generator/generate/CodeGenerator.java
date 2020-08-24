@@ -9,7 +9,6 @@ import com.example.generator.properties.GeneratorProperties;
 import com.example.generator.util.StrUtil;
 import com.google.common.collect.Lists;
 import freemarker.template.TemplateException;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
@@ -23,7 +22,6 @@ import java.util.Objects;
  * @date 2020/08/20
  * @description: 类描述: 代码生成器
  **/
-@Slf4j
 public class CodeGenerator {
 
     private Connection connection;
@@ -44,7 +42,8 @@ public class CodeGenerator {
         // 获取表结构对象
         TableInfo tableInfo = getTableStructure();
         // 输出模板数据到文件
-        writeTemplateToFile(tableInfo, generatorProperties.getProjectDir());
+        String projectDir = generatorProperties.getProjectDir();
+        writeTemplateToFile(tableInfo, StringUtils.isNotBlank(projectDir) ? projectDir : StrUtil.convertUnderLineToFirstUpperCamelCase(projectDir));
     }
 
     /**

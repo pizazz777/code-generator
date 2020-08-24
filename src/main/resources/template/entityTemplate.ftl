@@ -2,6 +2,7 @@ package ${entityPackage!""};
 
 import lombok.*;
 import ${projectPackage!""}.entity.PageBean;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel(${name})
 public class ${tableInfo.upperCamelCaseName!""}DO extends PageBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
