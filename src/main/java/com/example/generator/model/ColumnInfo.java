@@ -72,29 +72,30 @@ public class ColumnInfo {
     private String getFieldTypeByDataTypeOfMySql() {
         // 默认为String类型
         String fieldType = "String";
-        if (Objects.equals(this.dataType, VARCHAR.name())) {
+        String upperCase = this.dataType.toUpperCase();
+        if (Objects.equals(upperCase, VARCHAR.name())) {
             fieldType = "String";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.NVACHAR.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.NVACHAR.name())) {
             fieldType = "String";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.TEXT.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.TEXT.name())) {
             fieldType = "String";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.INT.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.INT.name())) {
             fieldType = "Integer";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.SMALLINT.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.SMALLINT.name())) {
             fieldType = "Short";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.BIGINT.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.BIGINT.name())) {
             fieldType = "Long";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.TINYINT.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.TINYINT.name())) {
             fieldType = "Boolean";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.DATETIME.name()) || Objects.equals(dataType, MySqlDataTypeEnum.DATETIME2.name()) || Objects.equals(dataType, MySqlDataTypeEnum.TIMESTAMP.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.DATETIME.name()) || Objects.equals(dataType, MySqlDataTypeEnum.DATETIME2.name()) || Objects.equals(dataType, MySqlDataTypeEnum.TIMESTAMP.name())) {
             fieldType = "LocalDateTime";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.DATE.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.DATE.name())) {
             fieldType = "LocalDate";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.DOUBLE.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.DOUBLE.name())) {
             fieldType = "Double";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.FLOAT.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.FLOAT.name())) {
             fieldType = "Float";
-        } else if (Objects.equals(this.dataType, MySqlDataTypeEnum.DECIMAL.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.DECIMAL.name())) {
             fieldType = "BigDecimal";
         }
         return fieldType;
@@ -107,13 +108,14 @@ public class ColumnInfo {
     private String getFieldTypeByDataTypeOfOracle() {
         // 默认为String类型
         String fieldType = "String";
-        if (Objects.equals(this.dataType, OracleDataTypeEnum.VARCHAR.name()) || Objects.equals(this.dataType, OracleDataTypeEnum.VARCHAR2.name()) || Objects.equals(this.dataType, OracleDataTypeEnum.CHAR.name())) {
+        String upperCase = this.dataType.toUpperCase();
+        if (Objects.equals(upperCase, OracleDataTypeEnum.VARCHAR.name()) || Objects.equals(upperCase, OracleDataTypeEnum.VARCHAR2.name()) || Objects.equals(upperCase, OracleDataTypeEnum.CHAR.name())) {
             fieldType = "String";
-        } else if (Objects.equals(this.dataType, OracleDataTypeEnum.NUMBER.name())) {
+        } else if (Objects.equals(upperCase, OracleDataTypeEnum.NUMBER.name())) {
             fieldType = "Integer";
-        } else if (Objects.equals(this.dataType, OracleDataTypeEnum.LONG.name())) {
+        } else if (Objects.equals(upperCase, OracleDataTypeEnum.LONG.name())) {
             fieldType = "Long";
-        } else if (Objects.equals(this.dataType, OracleDataTypeEnum.DATE.name())) {
+        } else if (Objects.equals(upperCase, OracleDataTypeEnum.DATE.name())) {
             fieldType = "LocalDateTime";
         }
         return fieldType;

@@ -23,7 +23,6 @@ import java.time.LocalDateTime;
 public class ${tableInfo.upperCamelCaseName!""}DO extends PageBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
 <#if tableInfo.columnInfoList?? && (tableInfo.columnInfoList?size > 0)>
 <#list tableInfo.columnInfoList as item>
 

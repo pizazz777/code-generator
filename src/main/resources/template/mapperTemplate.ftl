@@ -88,7 +88,7 @@
     <#list tableInfo.columnInfoList as item>
         <#if item.firstLowerCamelCaseName != "id" && item.firstLowerCamelCaseName != "createUserId" && item.firstLowerCamelCaseName != "createTime">
             <if test="${item.firstLowerCamelCaseName} != null<#if item.fieldDataType?? && item.fieldDataType == "String"> and ${item.firstLowerCamelCaseName} != ''</#if>">
-                ${item.columnName!""} = <#noparse>#{</#noparse>${item.firstLowerCamelCaseName}<#noparse>}</#noparse><#if item_has_next>,</#if>
+                ${item.name!""} = <#noparse>#{</#noparse>${item.firstLowerCamelCaseName}<#noparse>}</#noparse><#if item_has_next>,</#if>
             </if>
         </#if>
     </#list>
@@ -115,7 +115,7 @@
         id = <#noparse>#{id}</#noparse>
     </select>
 
-<#if tableInfo.databaseSchema == "DatabaseSchemaEnum.MYSQL">
+<#if tableInfo.databaseSchema == "MYSQL">
     <select id="isExistById" resultType="java.lang.Boolean">
         SELECT EXISTS
         (
@@ -126,7 +126,7 @@
         )
     </select>
 </#if>
-<#if tableInfo.databaseSchema == "DatabaseSchemaEnum.SQLSERVER">
+<#if tableInfo.databaseSchema == "SQLSERVER">
     <select id="isExistById" resultType="java.lang.Boolean">
         SELECT ISNULL(
         (

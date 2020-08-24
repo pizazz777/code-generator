@@ -17,7 +17,7 @@
     </#list>
 <#else>
 </#if>
-package ${projectPackage!""};
+package ${controllerPackage!""};
 
 import ${projectPackage!""}.component.exception.ServiceException;
 import ${projectPackage!""}.component.response.ResCode;
@@ -26,7 +26,6 @@ import java.util.Objects;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.GetMapping;
