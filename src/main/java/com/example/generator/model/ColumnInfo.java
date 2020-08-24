@@ -18,6 +18,9 @@ import static com.example.generator.model.MySqlDataTypeEnum.*;
 @Builder
 public class ColumnInfo {
 
+    /**
+     * 下划线接一个字母或数字
+     */
     private static final Pattern UNDERLINE_WITH_CHAR = Pattern.compile("(_[A-Za-z0-9])");
 
     /**
@@ -48,14 +51,18 @@ public class ColumnInfo {
      */
     public void transform(DatabaseSchemaEnum schemaEnum) {
         // 表字段类型->类字段类型
+        transformFieldDataType(schemaEnum);
+        // 表字段名->类字段名(
+        this.firstLowerCamelCaseName = StrUtil.convertUnderLineToFirstLowerCamelCase(this.name);
+    }
+
+    private void transformFieldDataType(DatabaseSchemaEnum schemaEnum) {
         if (Objects.equals(schemaEnum, DatabaseSchemaEnum.MYSQL)) {
             this.fieldDataType = getFieldTypeByDataTypeOfMySql();
         }
         if (Objects.equals(schemaEnum, DatabaseSchemaEnum.ORACLE)) {
             this.fieldDataType = getFieldTypeByDataTypeOfOracle();
         }
-        // 表字段名->类字段名(
-        this.firstLowerCamelCaseName = StrUtil.convertUnderLineToFirstLowerCamelCase(this.name);
     }
 
 

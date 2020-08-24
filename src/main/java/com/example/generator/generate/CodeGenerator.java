@@ -42,19 +42,19 @@ public class CodeGenerator {
         // 获取表结构对象
         TableInfo tableInfo = getTableStructure();
         // 输出模板数据到文件
-        String projectDir = generatorProperties.getProjectDir();
-        writeTemplateToFile(tableInfo, StringUtils.isNotBlank(projectDir) ? projectDir : StrUtil.convertUnderLineToFirstUpperCamelCase(projectDir));
+        writeTemplateToFile(tableInfo);
     }
 
     /**
      * 输出模板数据到文件
      */
-    private void writeTemplateToFile(TableInfo tableInfo, String outputFileDirPath) throws IOException, TemplateException {
+    private void writeTemplateToFile(TableInfo tableInfo) throws IOException, TemplateException {
         // 模板处理器
         TemplateHandler templateHandler = new TemplateHandler();
         // 表名(首字母大写驼峰,例如SysRole)
         String tableInfoUpperCamelCaseName = tableInfo.getUpperCamelCaseName();
-        outputFileDirPath = getOutputPath(outputFileDirPath);
+        // 获取输出文件路径
+        String outputFileDirPath = getOutputPath();
         String templateFilePathPrefix = outputFileDirPath + File.separator + "#{package}" + File.separator + tableInfoUpperCamelCaseName;
         generatorProperties.setTableInfo(tableInfo);
 
@@ -83,16 +83,27 @@ public class CodeGenerator {
         }
     }
 
-    private String getOutputPath(String outputFileDirPath) {
-        outputFileDirPath = StringUtils.isNotBlank(outputFileDirPath) ? outputFileDirPath : generatorProperties.getTableName();
-        File outputFileDir = new File(outputFileDirPath);
+    /**
+     * 获取输出文件路径
+     */
+    private String getOutputPath() {
+        String projectDir = generatorProperties.getProjectDir();
+        if (StringUtils.isNotBlank(projectDir)) {
+            if (!projectDir.endsWith("/") && !projectDir.endsWith("\\")) {
+                projectDir += File.separator;
+            }
+            projectDir += "src/main";
+        } else {
+            projectDir = StrUtil.convertUnderLineToFirstUpperCamelCase(generatorProperties.getTableName());
+        }
+        File outputFileDir = new File(projectDir);
         if (!outputFileDir.exists()) {
             boolean success = outputFileDir.mkdirs();
             if (success) {
-                outputFileDirPath = outputFileDir.getAbsolutePath();
+                projectDir = outputFileDir.getAbsolutePath();
             }
         }
-        return outputFileDirPath;
+        return projectDir;
     }
 
     /**

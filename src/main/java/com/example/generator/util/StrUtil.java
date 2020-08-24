@@ -16,7 +16,7 @@ public class StrUtil {
     /**
      * 下划线接一个字母或数字
      */
-    public static final Pattern UNDERLINE_WITH_CHAR = Pattern.compile("(_[A-Za-z0-9])");
+    private static final Pattern UNDERLINE_WITH_CHAR = Pattern.compile("(_[A-Za-z0-9])");
 
     /**
      * 下划线转驼峰
