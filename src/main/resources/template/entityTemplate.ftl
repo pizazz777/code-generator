@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(${name})
+@ApiModel("${name!""}")
 public class ${tableInfo.upperCamelCaseName!""}DO extends PageBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
