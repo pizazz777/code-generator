@@ -8,7 +8,7 @@ package com.example.generator.model;
 public enum MySqlDataTypeEnum {
 
     VARCHAR,
-    NVACHAR,
+    NVARCHAR,
     TEXT,
     SMALLINT,
     INT,

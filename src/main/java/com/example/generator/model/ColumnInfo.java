@@ -52,7 +52,7 @@ public class ColumnInfo {
     public void transform(DatabaseSchemaEnum schemaEnum) {
         // 表字段类型->类字段类型
         transformFieldDataType(schemaEnum);
-        // 表字段名->类字段名(
+        // 表字段名->类字段名(驼峰形式首字母小写)
         this.firstLowerCamelCaseName = StrUtil.convertUnderLineToFirstLowerCamelCase(this.name);
     }
 
@@ -75,7 +75,7 @@ public class ColumnInfo {
         String upperCase = this.dataType.toUpperCase();
         if (Objects.equals(upperCase, VARCHAR.name())) {
             fieldType = "String";
-        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.NVACHAR.name())) {
+        } else if (Objects.equals(upperCase, MySqlDataTypeEnum.NVARCHAR.name())) {
             fieldType = "String";
         } else if (Objects.equals(upperCase, MySqlDataTypeEnum.TEXT.name())) {
             fieldType = "String";
